@@ -1,1 +1,0 @@
-# Zona-de-Respingo
