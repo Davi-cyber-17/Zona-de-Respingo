@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#070a14">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Zona de Respingo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div class="bg"><i></i><i></i><i></i><i></i></div>
+
+  <!-- MENU -->
+  <section id="menu" class="screen active">
+    <h1 class="logo"><span>ZONA DE</span><span>RESPINGO</span></h1>
+    <p class="tag">Arena de tinta para 2 a 4 jogadores</p>
+    <div class="col">
+      <button class="btn" id="btnOnline">Modo Online</button>
+      <button class="btn alt" id="btnLocal">Modo Local</button>
+    </div>
+    <p class="hint">Seu rolo anda sozinho, mas você escolhe o lado: use W A S D, as setas, os botões na tela ou deslize o dedo no tabuleiro para pintar mais área que os outros.</p>
+  </section>
+
+  <!-- LOCAL -->
+  <section id="localSetup" class="screen">
+    <h2 class="title">Modo Local</h2>
+    <p class="hint">Quantos jogadores no mesmo aparelho?</p>
+    <div class="row" id="localCount">
+      <button class="chip" data-n="2">2</button>
+      <button class="chip" data-n="3">3</button>
+      <button class="chip" data-n="4">4</button>
+    </div>
+    <p class="hint keymap" id="localKeys"></p>
+    <div class="col">
+      <button class="btn" id="btnLocalStart">Jogar</button>
+      <button class="btn ghost" data-go="menu">Voltar</button>
+    </div>
+  </section>
+
+  <!-- ONLINE -->
+  <section id="onlineMenu" class="screen">
+    <h2 class="title">Modo Online</h2>
+    <p class="hint">Funciona entre celular, tablet e computador. Todos abrem o mesmo endereço do site.</p>
+    <div class="col">
+      <button class="btn" id="btnCreate">Criar sala</button>
+      <div class="or">ou entre em uma sala</div>
+      <input id="inpCode" maxlength="4" placeholder="CÓDIGO" autocomplete="off" autocapitalize="characters" spellcheck="false">
+      <button class="btn alt" id="btnJoin">Entrar na sala</button>
+      <button class="btn ghost" id="btnOnlineBack">Voltar</button>
+    </div>
+    <p class="status" id="onlineStatus"></p>
+  </section>
+
+  <!-- LOBBY -->
+  <section id="lobby" class="screen">
+    <h2 class="title">Sala</h2>
+    <button class="code" id="roomCode" title="Copiar código">----</button>
+    <p class="hint" id="codeHint">Toque no código para copiar.</p>
+    <button class="btn ghost small" id="btnLink">Copiar link da sala</button>
+    <ul id="players"></ul>
+    <div class="col">
+      <button class="btn" id="btnStart">Iniciar jogo</button>
+      <p class="hint" id="waitHost">Aguardando o anfitrião iniciar...</p>
+      <button class="btn ghost" id="btnLeave">Sair da sala</button>
+    </div>
+  </section>
+
+  <!-- JOGO -->
+  <section id="game" class="screen">
+    <div id="hud">
+      <div id="time">60</div>
+      <div id="bar"><b></b><b></b><b></b><b></b></div>
+    </div>
+    <div id="stage">
+      <div class="dock" id="dockA"></div>
+      <div id="boardWrap">
+        <canvas id="board"></canvas>
+        <div class="corner c0"><span>0%</span></div>
+        <div class="corner c1"><span>0%</span></div>
+        <div class="corner c2"><span>0%</span></div>
+        <div class="corner c3"><span>0%</span></div>
+        <div id="count"></div>
+      </div>
+      <div class="dock" id="dockB"></div>
+    </div>
+    <p id="keys"></p>
+    <div id="end">
+      <div class="card">
+        <h2 id="winner">Fim de jogo</h2>
+        <ol id="ranking"></ol>
+        <button class="btn" id="btnAgain">Jogar de novo</button>
+        <p class="hint" id="endWait">Aguardando o anfitrião...</p>
+        <button class="btn ghost" id="btnExit">Sair</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
